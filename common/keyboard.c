@@ -30,6 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "bootmagic.h"
 #include "eeconfig.h"
 #include "backlight.h"
+#include "ergodox.h"
 #ifdef MOUSEKEY_ENABLE
 #   include "mousekey.h"
 #endif
@@ -91,6 +92,7 @@ void keyboard_task(void)
     matrix_row_t matrix_row = 0;
     matrix_row_t matrix_change = 0;
 
+    ergodox_board_led_off();
     matrix_scan();
     for (uint8_t r = 0; r < MATRIX_ROWS; r++) {
         matrix_row = matrix_get_row(r);
@@ -110,6 +112,7 @@ void keyboard_task(void)
                         .pressed = (matrix_row & ((matrix_row_t)1<<c)),
                         .time = (timer_read() | 1) /* time should not be 0 */
                     });
+                    ergodox_board_led_on();
                     // record a processed key
                     matrix_prev[r] ^= ((matrix_row_t)1<<c);
                     // process a key per task call
@@ -133,10 +136,11 @@ MATRIX_LOOP_END:
 #endif
 
 #ifdef SERIAL_MOUSE_ENABLE
-        serial_mouse_task();
+    serial_mouse_task();
 #endif
 
     // update LED
+    ergodox_board_led_off();
     if (led_status != host_keyboard_leds()) {
         led_status = host_keyboard_leds();
         keyboard_set_leds(led_status);
