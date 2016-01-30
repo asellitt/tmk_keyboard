@@ -27,11 +27,11 @@ Project located at <https://github.com/benblazak/ergodox-firmware>
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x1307
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    TMK/Cub
-#define PRODUCT         Ergodox
-#define DESCRIPTION     t.m.k. keyboard firmware for Ergodox
+#define PRODUCT_ID      0x4153
+#define DEVICE_VER      0x0101
+#define MANUFACTURER    TMK/asellitt
+#define PRODUCT         Ergodox Keyboard
+#define DESCRIPTION     TMK keyboard firmware for Ergodox
 
 #define MATRIX_ROWS 14
 #define MATRIX_COLS 6
