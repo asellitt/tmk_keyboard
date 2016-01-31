@@ -28,13 +28,13 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Layer 1, Arrows, Media Keys
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * | Teensy |  F1  |  F2  |  F3  |  F4  |  F5  | xxxx |           | xxxx |  F6  |  F7  |  F8  |  F9  |  F0  |        |
+     * |  Vol+  |  F1  |  F2  |  F3  |  F4  |  F5  | xxxx |           | xxxx |  F6  |  F7  |  F8  |  F9  |  F0  | Teensy |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |  Vol+  |      |  Up  |      |      |      | Next |           | Prev | MWUP | MUP  | MWDN |      |      |        |
+     * |  Vol-  |      |  Up  |      |      |      | Next |           | Prev | MWUP | MUP  | MWDN |      |      |        |
      * |--------+------+------+------+------+------| Trck |           | Trck |------+------+------+------+------+--------|
-     * |  Vol-  | Left | Down | Rght |      |      |------|           |------| MLFT | MDWN | MRGT |      |      |        |
+     * |  ESC   | Left | Down | Rght |      |      |------|           |------| MLFT | MDWN | MRGT |      |      |        |
      * |--------+------+------+------+------+------| Mute |           | Play |------+------+------+------+------+--------|
-     * |        |      |      |      |      |      |      |           | Paus | LCLK |      | RCLK |      |      |        |
+     * |  LSFT  |      |      |      |      |      |      |           | Paus | LCLK |      | RCLK |      |      |  RSFT  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      *   |  ~L1 |      | LEFT | RGHT | LGUI |                                       | RGUI |  UP  | DOWN |      | ~L1  |
      *   `----------------------------------'                                       `----------------------------------'
@@ -70,19 +70,19 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP(  // Layer1 : Arrows, Media Keys, Teensy
         // left hand
-        FN0,F1  ,F2  ,F3  ,F4  ,F5  ,FN2 ,
-        VOLU ,NO  ,UP  ,NO  ,NO  ,NO  ,MPRV,
-        VOLD ,LEFT,DOWN,RGHT,NO  ,NO  ,
-        NO  ,NO  ,NO  ,NO  ,NO  ,NO  ,MUTE,
+        VOLU,F1  ,F2  ,F3  ,F4  ,F5  ,FN2 ,
+        VOLD,NO  ,UP  ,NO  ,NO  ,NO  ,MPRV,
+        TRNS,LEFT,DOWN,RGHT,NO  ,NO  ,
+        TRNS,NO  ,NO  ,NO  ,NO  ,NO  ,MUTE,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
                                  TRNS,TRNS,TRNS,
         // right hand
-             FN3 ,F6  ,F7  ,F8  ,F9  ,F10 ,NO   ,
+             FN3 ,F6  ,F7  ,F8  ,F9  ,F10 ,FN0  ,
              MNXT,WH_U,MS_U,WH_D,NO  ,NO  ,NO  ,
-                  MS_L,MS_D,MS_R,NO  ,NO  ,NO  ,
-             MPLY,BTN1,NO  ,BTN2,NO  ,NO  ,NO  ,
+                  MS_L,MS_D,MS_R,NO  ,NO  ,TRNS,
+             MPLY,BTN1,NO  ,BTN2,NO  ,NO  ,TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
         TRNS,TRNS,
         TRNS,
