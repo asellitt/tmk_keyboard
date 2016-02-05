@@ -30,11 +30,11 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------.           ,--------------------------------------------------.
      * |  Vol+  |  F1  |  F2  |  F3  |  F4  |  F5  | xxxx |           | xxxx |  F6  |  F7  |  F8  |  F9  |  F10 | Teensy |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |  Vol-  |      |  Up  |      |      |      | Next |           | Prev | MWUP | MUP  | MWDN |      |      |        |
+     * |  Vol-  | qVim |  Up  |      |      |      | Next |           | Prev | MWUP | MUP  | MWDN |      |      |        |
      * |--------+------+------+------+------+------| Trck |           | Trck |------+------+------+------+------+--------|
      * |  ESC   | Left | Down | Rght |      |      |------|           |------| MLFT | MDWN | MRGT |      |      |        |
      * |--------+------+------+------+------+------| Mute |           | Play |------+------+------+------+------+--------|
-     * |  LSFT  |      |      |      |      |      |      |           | Paus | LCLK |      | RCLK |      |      |  RSFT  |
+     * |  LSFT  |      | xVim |      |      |      |      |           | Paus | LCLK |      | RCLK |      |      |  RSFT  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
      *   |  ~L1 |      | LEFT | RGHT | LGUI |                                       | RGUI |  UP  | DOWN |      | ~L1  |
      *   `----------------------------------'                                       `----------------------------------'
@@ -71,9 +71,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // Layer1 : Arrows, Media Keys, Teensy
         // left hand
         VOLU,F1  ,F2  ,F3  ,F4  ,F5  ,FN2 ,
-        VOLD,NO  ,UP  ,NO  ,NO  ,NO  ,MPRV,
+        VOLD,FN7 ,UP  ,NO  ,NO  ,NO  ,MPRV,
         TRNS,LEFT,DOWN,RGHT,NO  ,NO  ,
-        TRNS,NO  ,NO  ,NO  ,NO  ,NO  ,MUTE,
+        TRNS,NO  ,FN8 ,NO  ,NO  ,NO  ,MUTE,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
@@ -99,6 +99,8 @@ enum macro_id {
     DUCK,
     CAT,
     ROCKET,
+    QUIT_VIM,
+    SAVE_VIM,
 };
 
 /*
@@ -112,6 +114,8 @@ static const uint16_t PROGMEM fn_actions[] = {
     [4] = ACTION_MACRO(ROCKET),
     [5] = ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),
     [6] = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),
+    [7] = ACTION_MACRO(QUIT_VIM),
+    [8] = ACTION_MACRO(SAVE_VIM),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -128,9 +132,11 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     if (record->event.pressed) {
         switch (id) {
-            case DUCK:   return MACRO_DUCK;
-            case CAT:    return MACRO_CAT;
-            case ROCKET: return MACRO_ROCKET;
+            case DUCK:      return MACRO_DUCK;
+            case CAT:       return MACRO_CAT;
+            case ROCKET:    return MACRO_ROCKET;
+            case QUIT_VIM:  return MACRO_QUIT_VIM;
+            case SAVE_VIM:  return MACRO_SAVE_VIM;
         }
     }
     return MACRO_NONE;
