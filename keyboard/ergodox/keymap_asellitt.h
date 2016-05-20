@@ -31,7 +31,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,--------------------------------------------------.           ,--------------------------------------------------.
      * |  Vol+  |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 | Teensy |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
-     * |  Vol-  | qVim |  Up  |      |      |      | Next |           | Prev | MWUP | MUP  | MWDN |      |      |        |
+     * |  Vol-  | qVim |  Up  |      |      |      | Next |           | Prev | MWUP | MUP  | MWDN |      |      |  pls1  |
      * |--------+------+------+------+------+------| Trck |           | Trck |------+------+------+------+------+--------|
      * |  ESC   | Left | Down | Rght |      |      |------|           |------| MLFT | MDWN | MRGT |      |      |  ~L2   |
      * |--------+------+------+------+------+------| Mute |           | Play |------+------+------+------+------+--------|
@@ -102,7 +102,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                  TRNS,TRNS,TRNS,
         // right hand
              NO  ,F6  ,F7  ,F8  ,F9  ,F10 ,FN0 ,
-             MNXT,WH_U,MS_U,WH_D,NO  ,NO  ,NO  ,
+             MNXT,WH_U,MS_U,WH_D,NO  ,NO  ,FN11,
                   MS_L,MS_D,MS_R,NO  ,NO  ,FN2 ,
              MPLY,BTN1,NO  ,BTN2,NO  ,NO  ,TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -145,6 +145,7 @@ enum macro_id {
     ROCKET,
     QUIT_VIM,
     SAVE_VIM,
+    PLUS_ONE,
 };
 
 /*
@@ -165,6 +166,7 @@ static const uint16_t PROGMEM fn_actions[] = {
 
     [9]  = ACTION_MACRO(QUIT_VIM),
     [10] = ACTION_MACRO(SAVE_VIM),
+    [11] = ACTION_MACRO(PLUS_ONE),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -187,6 +189,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
             case ROCKET:            return MACRO_ROCKET;
             case QUIT_VIM:          return MACRO_QUIT_VIM;
             case SAVE_VIM:          return MACRO_SAVE_VIM;
+            case PLUS_ONE:          return MACRO_PLUS_ONE;
         }
     }
     return MACRO_NONE;
