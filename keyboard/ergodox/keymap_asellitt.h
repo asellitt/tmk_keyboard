@@ -16,14 +16,14 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|  =>  |           |  :   |------+------+------+------+------+--------|
      * |  LSFT  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |  RSFT  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |  ~L1 |      | LEFT | RGHT | LGUI |                                       | RGUI |  UP  | DOWN |      | ~L1  |
+     *   |  ~L1 |      | LEFT | RGHT | LCTL |                                       | RCTL |  UP  | DOWN |      | ~L1  |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | HOME |  END |       | PGUP | PGDN |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      | LAlt |       | RAlt |      |      |
      *                                 | BSPC | DEL  |------|       |------| ENT  | SPC  |
-     *                                 |      |      | LCtl |       | RCtl |      |      |
+     *                                 |      |      | LGUI |       | RGUI |      |      |
      *                                 `--------------------'       `--------------------'
      *
      * Keymap: Layer 1, Arrows, Media Keys
@@ -37,14 +37,14 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------| Mute |           | Play |------+------+------+------+------+--------|
      * |  LSFT  |      | xVim |      |      |      |      |           | Paus | LCLK |      | RCLK |      |      |  RSFT  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |  ~L1 |      | LEFT | RGHT | LGUI |                                       | RGUI |  UP  | DOWN |      | ~L1  |
+     *   |  ~L1 |      | LEFT | RGHT | LCTL |                                       | RCTL |  UP  | DOWN |      | ~L1  |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | HOME |  END |       | PGUP | PGDN |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      | LAlt |       | RAlt |      |      |
      *                                 | BSPC | DEL  |------|       |------| ENT  | SPC  |
-     *                                 |      |      | LCtl |       | RCtl |      |      |
+     *                                 |      |      | LGUI |       | RGUI |      |      |
      *                                 `--------------------'       `--------------------'
      *
      * Keymap: Layer 2, *taps nose*
@@ -58,14 +58,14 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
      * |  LSFT  |      |      |      |      |      |      |           |      |      |      |      |      |      |  RSFT  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |  ~L1 |      | LEFT | RGHT | LGUI |                                       | RGUI |  UP  | DOWN |      | ~L1  |
+     *   |  ~L1 |      | LEFT | RGHT | LCTL |                                       | RCTL |  UP  | DOWN |      | ~L1  |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | HOME |  END |       | PGUP | PGDN |
      *                                 ,------|------|------|       |------+------+------.
      *                                 |      |      | LAlt |       | RAlt |      |      |
      *                                 | BSPC | DEL  |------|       |------| ENT  | SPC  |
-     *                                 |      |      | LCtl |       | RCtl |      |      |
+     *                                 |      |      | LGUI |       | RGUI |      |      |
      *                                 `--------------------'       `--------------------'
      */
 
@@ -75,19 +75,19 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TAB ,Q   ,W   ,E   ,R   ,T   ,LBRC,
         ESC ,A   ,S   ,D   ,F   ,G   ,
         LSFT,Z   ,X   ,C   ,V   ,B   ,FN8 ,
-        FN1 ,NO  ,LEFT,RGHT,LGUI,
+        FN1 ,NO  ,LEFT,RGHT,LCTL,
                                       HOME,END ,
                                            LALT,
-                                 BSPC,DEL ,RCTL,
+                                 BSPC,DEL ,RGUI,
         // right hand
              MINS,6   ,7   ,8   ,9   ,0   ,EQL ,
              RBRC,Y   ,U   ,I   ,O   ,P   ,QUOT,
                   H   ,J   ,K   ,L   ,SCLN,BSLS,
              FN7 ,N   ,M   ,COMM,DOT, SLSH,RSFT,
-                       RGUI,UP  ,DOWN,NO  ,FN1 ,
+                       RCTL,UP  ,DOWN,NO  ,FN1 ,
         PGUP,PGDN,
         RALT,
-        RCTL,ENT ,SPC
+        RGUI,ENT ,SPC
     ),
 
     KEYMAP(  // Layer1 : Arrows, Media Keys, Teensy
