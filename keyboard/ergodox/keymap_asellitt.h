@@ -75,7 +75,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TAB ,Q   ,W   ,E   ,R   ,T   ,LBRC,
         ESC ,A   ,S   ,D   ,F   ,G   ,
         LSFT,Z   ,X   ,C   ,V   ,B   ,FN9 ,
-        FN1 ,FN13,LEFT,RGHT,LCTL,
+        FN1 ,NO  ,LEFT,RGHT,LCTL,
                                       HOME,END ,
                                            LALT,
                                  BSPC,DEL ,RGUI,
@@ -84,7 +84,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              RBRC,Y   ,U   ,I   ,O   ,P   ,QUOT,
                   H   ,J   ,K   ,L   ,SCLN,BSLS,
              FN8 ,N   ,M   ,COMM,DOT, SLSH,RSFT,
-                       RCTL,UP  ,DOWN,FN14,FN1 ,
+                       RCTL,UP  ,DOWN,NO  ,FN1 ,
         PGUP,PGDN,
         RALT,
         RGUI,ENT ,SPC
@@ -147,8 +147,6 @@ enum macro_id {
     QUIT_VIM,
     SAVE_VIM,
     PLUS_ONE,
-    ERB_OPEN,
-    ERB_OPEN_EQL,
 };
 
 /*
@@ -171,8 +169,6 @@ static const uint16_t PROGMEM fn_actions[] = {
     [10] = ACTION_MACRO(QUIT_VIM),
     [11] = ACTION_MACRO(SAVE_VIM),
     [12] = ACTION_MACRO(PLUS_ONE),
-    [13] = ACTION_MACRO(ERB_OPEN),
-    [14] = ACTION_MACRO(ERB_OPEN_EQL),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -197,8 +193,6 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
             case QUIT_VIM:          return MACRO_QUIT_VIM;
             case SAVE_VIM:          return MACRO_SAVE_VIM;
             case PLUS_ONE:          return MACRO_PLUS_ONE;
-            case ERB_OPEN:          return MACRO_ERB_OPEN;
-            case ERB_OPEN_EQL:      return MACRO_ERB_OPEN_EQL;
         }
     }
     return MACRO_NONE;
