@@ -16,7 +16,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|  =>  |           |  :   |------+------+------+------+------+--------|
      * |  LSFT  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |  RSFT  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |  ~L1 |      | LEFT | RGHT | LCTL |                                       | RCTL |  UP  | DOWN |      | ~L1  |
+     *   |  ~L1 | emoji| LEFT | RGHT | LCTL |                                       | RCTL |  UP  | DOWN | emoji| ~L1  |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | HOME |  END |       | PGUP | PGDN |
@@ -75,7 +75,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TAB ,Q   ,W   ,E   ,R   ,T   ,LBRC,
         ESC ,A   ,S   ,D   ,F   ,G   ,
         LSFT,Z   ,X   ,C   ,V   ,B   ,FN9 ,
-        FN1 ,NO  ,LEFT,RGHT,LCTL,
+        FN1 ,FN13  ,LEFT,RGHT,LCTL,
                                       HOME,END ,
                                            LALT,
                                  BSPC,DEL ,RGUI,
@@ -84,7 +84,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              RBRC,Y   ,U   ,I   ,O   ,P   ,QUOT,
                   H   ,J   ,K   ,L   ,SCLN,BSLS,
              FN8 ,N   ,M   ,COMM,DOT, SLSH,RSFT,
-                       RCTL,UP  ,DOWN,NO  ,FN1 ,
+                       RCTL,UP  ,DOWN,FN13 ,FN1 ,
         PGUP,PGDN,
         RALT,
         RGUI,ENT ,SPC
@@ -147,6 +147,7 @@ enum macro_id {
     QUIT_VIM,
     SAVE_VIM,
     PLUS_ONE,
+    EMOJI,
 };
 
 /*
@@ -169,6 +170,7 @@ static const uint16_t PROGMEM fn_actions[] = {
     [10] = ACTION_MACRO(QUIT_VIM),
     [11] = ACTION_MACRO(SAVE_VIM),
     [12] = ACTION_MACRO(PLUS_ONE),
+    [13] = ACTION_MACRO(EMOJI),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -193,6 +195,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
             case QUIT_VIM:          return MACRO_QUIT_VIM;
             case SAVE_VIM:          return MACRO_SAVE_VIM;
             case PLUS_ONE:          return MACRO_PLUS_ONE;
+            case EMOJI:             return MACRO_EMOJI;
         }
     }
     return MACRO_NONE;
