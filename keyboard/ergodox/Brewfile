@@ -1,3 +1,4 @@
 tap "osx-cross/avr"
 
 brew "avr-gcc@6"
+brew "teensy_loader_cli"
