@@ -7,6 +7,7 @@ Don't worry mate! It's really simple:
 
 ```bash
 $> cd tmk_keyboard/keyboard/ergodox
+$> brew bundle --verbose
 $> make -f Makefile.lufa clean
 $> make -f Makefile.lufa asellitt
 ```
