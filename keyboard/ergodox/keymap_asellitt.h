@@ -29,7 +29,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Layer 1, Arrows, Media Keys
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |  Vol+  |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 | Teensy |
+     * |  Vol+  |  F1  |  F2  |  F3  |  F4  |  F5  |      |           | devCC|  F6  |  F7  |  F8  |  F9  |  F10 | Teensy |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |  Vol-  | qVim |  Up  |      |      |      | Next |           | Prev | MWUP | MUP  | MWDN |      |      |  pls1  |
      * |--------+------+------+------+------+------| Trck |           | Trck |------+------+------+------+------+--------|
@@ -50,7 +50,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * Keymap: Layer 2, *taps nose*
      *
      * ,--------------------------------------------------.           ,--------------------------------------------------.
-     * |        | chta | peng | pand |      |      |      |           |      |      |      |      |      |      |        |
+     * |        | chee | peng | opos |      |      |      |           |      |      |      |      |      |      |        |
      * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
      * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
      * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -71,11 +71,11 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP( // layer 0 : default, QWERTY
         // left hand
-        GRV ,1   ,2   ,3   ,4   ,5   ,FN7 ,
+        GRV ,1   ,2   ,3   ,4   ,5   ,FN3 ,
         TAB ,Q   ,W   ,E   ,R   ,T   ,LBRC,
         ESC ,A   ,S   ,D   ,F   ,G   ,
-        LSFT,Z   ,X   ,C   ,V   ,B   ,FN9 ,
-        FN1 ,FN13  ,LEFT,RGHT,LCTL,
+        LSFT,Z   ,X   ,C   ,V   ,B   ,FN5 ,
+        FN1 ,FN6  ,LEFT,RGHT,LCTL,
                                       HOME,END ,
                                            LALT,
                                  BSPC,DEL ,RGUI,
@@ -83,8 +83,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              MINS,6   ,7   ,8   ,9   ,0   ,EQL ,
              RBRC,Y   ,U   ,I   ,O   ,P   ,QUOT,
                   H   ,J   ,K   ,L   ,SCLN,BSLS,
-             FN8 ,N   ,M   ,COMM,DOT, SLSH,RSFT,
-                       RCTL,UP  ,DOWN,FN13 ,FN1 ,
+             FN4 ,N   ,M   ,COMM,DOT, SLSH,RSFT,
+                       RCTL,UP  ,DOWN,FN6 ,FN1 ,
         PGUP,PGDN,
         RALT,
         RGUI,ENT ,SPC
@@ -93,16 +93,16 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // Layer1 : Arrows, Media Keys, Teensy
         // left hand
         VOLU,F1  ,F2  ,F3  ,F4  ,F5  ,NO  ,
-        VOLD,FN10,UP  ,NO  ,NO  ,NO  ,MPRV,
+        VOLD,FN11,UP  ,NO  ,NO  ,NO  ,MPRV,
         TRNS,LEFT,DOWN,RGHT,NO  ,NO  ,
-        TRNS,NO  ,FN11,NO  ,NO  ,NO  ,MUTE,
+        TRNS,NO  ,FN12,NO  ,NO  ,NO  ,MUTE,
         TRNS,TRNS,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
                                  TRNS,TRNS,TRNS,
         // right hand
-             NO  ,F6  ,F7  ,F8  ,F9  ,F10 ,FN0 ,
-             MNXT,WH_U,MS_U,WH_D,NO  ,NO  ,FN12,
+             FN10,F6  ,F7  ,F8  ,F9  ,F10 ,FN0 ,
+             MNXT,WH_U,MS_U,WH_D,NO  ,NO  ,FN13,
                   MS_L,MS_D,MS_R,NO  ,NO  ,FN2 ,
              MPLY,BTN1,NO  ,BTN2,NO  ,NO  ,TRNS,
                        TRNS,TRNS,TRNS,TRNS,TRNS,
@@ -113,7 +113,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP(  // Layer2 : *taps nose*
         // left hand
-        NO  ,FN3 ,FN4 ,FN5 ,FN6 ,NO  ,NO  ,
+        NO  ,FN7 ,FN8 ,FN9 ,NO  ,NO  ,NO  ,
         NO  ,NO  ,NO  ,NO  ,NO  ,NO  ,NO  ,
         TRNS,NO  ,NO  ,NO  ,NO  ,NO  ,
         TRNS,NO  ,NO  ,NO  ,NO  ,NO  ,NO  ,
@@ -133,21 +133,21 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
-/* id for user defined functions & macros */
+/* ids for user defined functions & macros */
 enum function_id {
     TEENSY_KEY,
 };
 
 enum macro_id {
+    ROCKET,
+    EMOJI,
     CHEETAH,
     LITTLE_PENGUIN,
-    GIANT_PANDA,
     OPOSSUM,
-    ROCKET,
+    DEV_CREDIT_CARD,
     QUIT_VIM,
     SAVE_VIM,
     PLUS_ONE,
-    EMOJI,
 };
 
 /*
@@ -158,19 +158,19 @@ static const uint16_t PROGMEM fn_actions[] = {
     [1]  = ACTION_LAYER_MOMENTARY(1),
     [2]  = ACTION_LAYER_MOMENTARY(2),
 
-    [3]  = ACTION_MACRO(CHEETAH),
-    [4]  = ACTION_MACRO(LITTLE_PENGUIN),
-    [5]  = ACTION_MACRO(OPOSSUM),
-    [6]  = ACTION_MACRO(GIANT_PANDA),
+    [3]  = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),
+    [4]  = ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),
+    [5]  = ACTION_MACRO(ROCKET),
+    [6]  = ACTION_MACRO(EMOJI),
 
-    [7]  = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),
-    [8]  = ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),
-    [9]  = ACTION_MACRO(ROCKET),
+    [7]  = ACTION_MACRO(CHEETAH),
+    [8]  = ACTION_MACRO(LITTLE_PENGUIN),
+    [9]  = ACTION_MACRO(OPOSSUM),
 
-    [10] = ACTION_MACRO(QUIT_VIM),
-    [11] = ACTION_MACRO(SAVE_VIM),
-    [12] = ACTION_MACRO(PLUS_ONE),
-    [13] = ACTION_MACRO(EMOJI),
+    [10] = ACTION_MACRO(DEV_CREDIT_CARD),
+    [11] = ACTION_MACRO(QUIT_VIM),
+    [12] = ACTION_MACRO(SAVE_VIM),
+    [13] = ACTION_MACRO(PLUS_ONE),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -187,15 +187,15 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
 const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     if (record->event.pressed) {
         switch (id) {
+            case EMOJI:             return MACRO_EMOJI;
+            case ROCKET:            return MACRO_ROCKET;
             case CHEETAH:           return MACRO_CHEETAH;
             case LITTLE_PENGUIN:    return MACRO_LITTLE_PENGUIN;
-            case GIANT_PANDA:       return MACRO_GIANT_PANDA;
             case OPOSSUM:           return MACRO_OPOSSUM;
-            case ROCKET:            return MACRO_ROCKET;
+            case DEV_CREDIT_CARD:   return MACRO_DEV_CREDIT_CARD;
             case QUIT_VIM:          return MACRO_QUIT_VIM;
             case SAVE_VIM:          return MACRO_SAVE_VIM;
             case PLUS_ONE:          return MACRO_PLUS_ONE;
-            case EMOJI:             return MACRO_EMOJI;
         }
     }
     return MACRO_NONE;
