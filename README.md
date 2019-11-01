@@ -12,6 +12,11 @@ $> make -f Makefile.lufa clean
 $> make -f Makefile.lufa asellitt
 ```
 
+Unless its not.
+
+if: `sh: avr-gcc: command not found`
+then: `export PATH="/usr/local/opt/avr-gcc@6/bin:$PATH"`
+
 Then (if you've remembered to open Teensy, you probably will though because you're such a clever fellow), just reboot the keyboard and it will automatically push the new firmware.
 
 Hakky happing!
