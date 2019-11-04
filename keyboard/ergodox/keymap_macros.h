@@ -36,3 +36,8 @@ END)
     T(EQL), D(LSFT), T(DOT), U(LSFT), D(LSFT), T(SPC), T(LBRC), T(RBRC), U(LSFT), T(LEFT), T(LEFT), \
     T(LEFT), T(LEFT), T(LEFT), T(LEFT), T(LEFT), T(LEFT), T(LEFT), T(LEFT), T(LEFT), T(SPC), \
 END)
+
+#define MACRO_JSX_FRAGMENT MACRO( \
+    I(5), \
+    D(LSFT), T(COMM), T(DOT), T(COMM), U(LSFT), T(SLSH), D(LSFT),T(DOT),U(LSFT),T(LEFT), T(LEFT), T(LEFT),\
+END)<>const  = () => {}</>

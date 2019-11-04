@@ -84,7 +84,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              RBRC,Y   ,U   ,I   ,O   ,P   ,QUOT,
                   H   ,J   ,K   ,L   ,SCLN,BSLS,
              FN4 ,N   ,M   ,COMM,DOT, SLSH,RSFT,
-                       RCTL,UP  ,DOWN,NO  ,FN1 ,
+                       RCTL,UP  ,DOWN,FN15,FN1 ,
         PGUP,PGDN,
         RALT,
         RGUI,ENT ,SPC
@@ -149,6 +149,7 @@ enum macro_id {
     SAVE_VIM,
     PLUS_ONE,
     JSX_FUNCTION,
+    JSX_FRAGMENT,
 };
 
 /*
@@ -172,7 +173,8 @@ static const uint16_t PROGMEM fn_actions[] = {
     [11] = ACTION_MACRO(QUIT_VIM),
     [12] = ACTION_MACRO(SAVE_VIM),
     [13] = ACTION_MACRO(PLUS_ONE),
-    [14] = ACTION_MACRO(JSX_FUNCTION)
+    [14] = ACTION_MACRO(JSX_FUNCTION),
+    [15] = ACTION_MACRO(JSX_FRAGMENT),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -200,6 +202,7 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
             case SAVE_VIM:          return MACRO_SAVE_VIM;
             case PLUS_ONE:          return MACRO_PLUS_ONE;
             case JSX_FUNCTION:      return MACRO_JSX_FUNCTION;
+            case JSX_FRAGMENT:      return MACRO_JSX_FRAGMENT;
         }
     }
     return MACRO_NONE;
