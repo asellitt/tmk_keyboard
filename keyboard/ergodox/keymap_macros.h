@@ -10,9 +10,9 @@ END) \
 #define MACRO_DEV_CREDIT_CARD MACRO( \
     I(5), \
     T(4), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(TAB), \
-    W(45), T(1), T(TAB), \
-    W(45), T(2), T(2), T(TAB), \
-    W(45), T(3), T(3), T(3), \
+    W(100), T(1), T(TAB), \
+    W(100), T(2), T(2), T(TAB), \
+    W(100), T(3), T(3), T(3), \
 END) \
 
 #define MACRO_QUIT_VIM MACRO( \
@@ -40,4 +40,4 @@ END)
 #define MACRO_JSX_FRAGMENT MACRO( \
     I(5), \
     D(LSFT), T(COMM), T(DOT), T(COMM), U(LSFT), T(SLSH), D(LSFT),T(DOT),U(LSFT),T(LEFT), T(LEFT), T(LEFT),\
-END)<>const  = () => {}</>
+END)
