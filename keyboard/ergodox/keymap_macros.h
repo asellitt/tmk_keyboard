@@ -9,10 +9,10 @@ END) \
 
 #define MACRO_DEV_CREDIT_CARD MACRO( \
     I(5), \
-    T(4), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(TAB), \
-    W(100), T(1), T(TAB), \
-    W(100), T(2), T(2), T(TAB), \
-    W(100), T(3), T(3), T(3), \
+    T(4), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), T(1), \
+    W(100), T(TAB), W(100), T(1), \
+    W(100), T(TAB), W(100), T(2), T(2), \
+    W(100), T(TAB), W(100), T(3), T(3), T(3), \
 END) \
 
 #define MACRO_QUIT_VIM MACRO( \
