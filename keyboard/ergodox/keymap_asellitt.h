@@ -16,7 +16,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |--------+------+------+------+------+------|  =>  |           |  :   |------+------+------+------+------+--------|
      * |  LSFT  |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |   /  |  RSFT  |
      * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
-     *   |  ~L1 |      | LEFT | RGHT | LCTL |                                       | RCTL |  UP  | DOWN |      | ~L1  |
+     *   |  ~L1 | TRIP | LEFT | RGHT | LCTL |                                       | RCTL |  UP  | DOWN |      | ~L1  |
      *   `----------------------------------'                                       `----------------------------------'
      *                                        ,-------------.       ,-------------.
      *                                        | HOME |  END |       | PGUP | PGDN |
@@ -71,11 +71,11 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP( // layer 0 : default, QWERTY
         // left hand
-        GRV ,1   ,2   ,3   ,4   ,5   ,FN3 ,
+        GRV ,1   ,2   ,3   ,4   ,5   ,FN4 ,
         TAB ,Q   ,W   ,E   ,R   ,T   ,LBRC,
         ESC ,A   ,S   ,D   ,F   ,G   ,
-        LSFT,Z   ,X   ,C   ,V   ,B   ,FN5 ,
-        FN1 ,FN14,LEFT,RGHT,LCTL,
+        LSFT,Z   ,X   ,C   ,V   ,B   ,FN6 ,
+        FN1 ,FN3 ,LEFT,RGHT,LCTL,
                                       HOME,END ,
                                            LALT,
                                  BSPC,DEL ,RGUI,
@@ -83,8 +83,8 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              MINS,6   ,7   ,8   ,9   ,0   ,EQL ,
              RBRC,Y   ,U   ,I   ,O   ,P   ,QUOT,
                   H   ,J   ,K   ,L   ,SCLN,BSLS,
-             FN4 ,N   ,M   ,COMM,DOT, SLSH,RSFT,
-                       RCTL,UP  ,DOWN,FN15,FN1 ,
+             FN5 ,N   ,M   ,COMM,DOT, SLSH,RSFT,
+                       RCTL,UP  ,DOWN,FN16,FN1 ,
         PGUP,PGDN,
         RALT,
         RGUI,ENT ,SPC
@@ -93,19 +93,19 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(  // Layer1 : Arrows, Media Keys, Teensy
         // left hand
         VOLU,F1  ,F2  ,F3  ,F4  ,F5  ,NO  ,
-        VOLD,FN11,UP  ,NO  ,NO  ,NO  ,MPRV,
+        VOLD,FN12,UP  ,NO  ,NO  ,NO  ,MPRV,
         TRNS,LEFT,DOWN,RGHT,NO  ,NO  ,
-        TRNS,NO  ,FN12,NO  ,NO  ,NO  ,MUTE,
-        TRNS,FN6  ,TRNS,TRNS,TRNS,
+        TRNS,NO  ,FN13,NO  ,NO  ,NO  ,MUTE,
+        TRNS,FN7  ,TRNS,TRNS,TRNS,
                                       TRNS,TRNS,
                                            TRNS,
                                  TRNS,TRNS,TRNS,
         // right hand
-             FN10,F6  ,F7  ,F8  ,F9  ,F10 ,FN0 ,
-             MNXT,WH_U,MS_U,WH_D,NO  ,NO  ,FN13,
+             FN11,F6  ,F7  ,F8  ,F9  ,F10 ,FN0 ,
+             MNXT,WH_U,MS_U,WH_D,NO  ,NO  ,FN14,
                   MS_L,MS_D,MS_R,NO  ,NO  ,FN2 ,
              MPLY,BTN1,NO  ,BTN2,NO  ,NO  ,TRNS,
-                       TRNS,TRNS,TRNS,FN6 ,TRNS,
+                       TRNS,TRNS,TRNS,FN7 ,TRNS,
         TRNS,TRNS,
         TRNS,
         TRNS,TRNS,TRNS
@@ -113,7 +113,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     KEYMAP(  // Layer2 : *taps nose*
         // left hand
-        NO  ,FN7 ,FN8 ,FN9 ,NO  ,NO  ,NO  ,
+        NO  ,FN8 ,FN9 ,FN10,NO  ,NO  ,NO  ,
         NO  ,NO  ,NO  ,NO  ,NO  ,NO  ,NO  ,
         TRNS,NO  ,NO  ,NO  ,NO  ,NO  ,
         TRNS,NO  ,NO  ,NO  ,NO  ,NO  ,NO  ,
@@ -160,21 +160,23 @@ static const uint16_t PROGMEM fn_actions[] = {
     [1]  = ACTION_LAYER_MOMENTARY(1),
     [2]  = ACTION_LAYER_MOMENTARY(2),
 
-    [3]  = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),
-    [4]  = ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),
-    [5]  = ACTION_MACRO(ROCKET),
-    [6]  = ACTION_MACRO(EMOJI),
+    [3] = ACTION_MODS(MOD_LCTL | MOD_LALT | MOD_LGUI | MOD_LSFT),
 
-    [7]  = ACTION_MACRO(CHEETAH),
-    [8]  = ACTION_MACRO(LITTLE_PENGUIN),
-    [9]  = ACTION_MACRO(OPOSSUM),
+    [4]  = ACTION_MODS_KEY(MOD_LSFT, KC_LBRC),
+    [5]  = ACTION_MODS_KEY(MOD_LSFT, KC_SCLN),
+    [6]  = ACTION_MACRO(ROCKET),
+    [7]  = ACTION_MACRO(EMOJI),
 
-    [10] = ACTION_MACRO(DEV_CREDIT_CARD),
-    [11] = ACTION_MACRO(QUIT_VIM),
-    [12] = ACTION_MACRO(SAVE_VIM),
-    [13] = ACTION_MACRO(PLUS_ONE),
-    [14] = ACTION_MACRO(JSX_FUNCTION),
-    [15] = ACTION_MACRO(JSX_FRAGMENT),
+    [8]  = ACTION_MACRO(CHEETAH),
+    [9]  = ACTION_MACRO(LITTLE_PENGUIN),
+    [10]  = ACTION_MACRO(OPOSSUM),
+
+    [11] = ACTION_MACRO(DEV_CREDIT_CARD),
+    [12] = ACTION_MACRO(QUIT_VIM),
+    [13] = ACTION_MACRO(SAVE_VIM),
+    [14] = ACTION_MACRO(PLUS_ONE),
+    [15] = ACTION_MACRO(JSX_FUNCTION),
+    [16] = ACTION_MACRO(JSX_FRAGMENT)
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
